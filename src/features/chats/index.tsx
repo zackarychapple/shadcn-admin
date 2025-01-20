@@ -25,20 +25,20 @@ import { ProfileDropdown } from '@/components/profile-dropdown'
 import { Search } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
 // Fake Data
-import { conversations } from './data/convo.json'
+import data from './data/convo.json'
 
-type ChatUser = (typeof conversations)[number]
+type ChatUser = (typeof data.conversations)[number]
 type Convo = ChatUser['messages'][number]
 
 export default function Chats() {
   const [search, setSearch] = useState('')
-  const [selectedUser, setSelectedUser] = useState<ChatUser>(conversations[0])
+  const [selectedUser, setSelectedUser] = useState<ChatUser>(data.conversations[0])
   const [mobileSelectedUser, setMobileSelectedUser] = useState<ChatUser | null>(
     null
   )
 
   // Filtered data based on the search query
-  const filteredChatList = conversations.filter(({ fullName }) =>
+  const filteredChatList = data.conversations.filter(({ fullName }) =>
     fullName.toLowerCase().includes(search.trim().toLowerCase())
   )
 
